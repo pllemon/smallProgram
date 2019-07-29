@@ -1,33 +1,20 @@
-<!--pages/my/my.wxml-->
 <view class='header'>
   <image class='banner' mode='aspectFill' src='../../images/banner.jpg'></image>
-  <view class='userIcon'>
-    <open-data type="userAvatarUrl"></open-data>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+      <image class="userIcon" src="../../images/people.png" mode="cover"></image>
+      <view class="username">点击登录</view>
+    </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userIcon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view class="username">{{userInfo.nickName}}</view>
+    </block>
   </view>
-  <open-data class='username' type="userNickName"></open-data>
-  <image class='icon scan' mode='aspectFill' src='../../images/icon_scan.png'></image>
+  <image class='icon scan' mode='aspectFill' bindtap="scanCode" src='../../images/icon_scan.png'></image>
 </view>
 
-<view class='item' data-url='../question/question' bindtap='goToUrl'>
-  <image class='icon' mode='aspectFill' src='../../images/icon_compile.png'></image>
-  <text>答卷</text>
+<navigator class='item' wx:for="{{navList}}" wx:key="index" url="{{item.url}}">
+  <image class='icon' mode='aspectFill' src='../../images/{{item.icon}}.png'></image>
+  <text>{{item.text}}</text>
   <image class='right' mode='aspectFill' src='../../images/right.png'></image>
-</view>
-<view class='item' data-url='../question/question'>
-  <image class='icon' mode='aspectFill' src='../../images/icon_QRcode.png'></image>
-  <text>我的二维码</text>
-  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
-</view>
-<view class='item' data-url='../subordinate/subordinate' bindtap='goToUrl'>
-  <image class='icon' mode='aspectFill' src='../../images/icon_group.png'></image>
-  <text>我的下级</text>
-  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
-</view>
-<view class='item' data-url='../subordinate/subordinate' bindtap='goToUrl'>
-  <image class='icon' mode='aspectFill' src='../../images/icon_coinpurse_line.png'></image>
-  <text>消费记录</text>
-  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
-</view>
-<!-- <view class='item' data-url='../question/question'>申请人
-  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
-</view> -->
+</navigator>

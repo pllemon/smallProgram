@@ -36,15 +36,6 @@
   top: 40rpx;
 }
 
-.item {
-  position: relative;
-  padding: 30rpx 40rpx;
-  border-bottom: 1rpx solid #dcdcdc;
-  background: #fff;
-  display: flex;
-  align-items: center;
-}
-
 .right {
   position: absolute;
   top: 36rpx;
@@ -58,3 +49,14 @@
   margin-right: 20rpx;
 }
 
+.userinfo button{
+  background: none;
+  font-size: 32rpx;
+  color: #fff;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.userinfo button:after{
+  border: none;
+}

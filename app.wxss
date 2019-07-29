@@ -9,6 +9,15 @@ page{
   align-items: center;
 }
 
+.item {
+  position: relative;
+  padding: 30rpx 40rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+
 .icon{
   width: 40rpx;
   height: 40rpx;

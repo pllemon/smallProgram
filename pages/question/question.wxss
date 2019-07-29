@@ -28,7 +28,6 @@
   padding: 20rpx 0;
 }
 .form input{
-  border: 1px solid #dcdcdc;
   width: 500rpx;
   height: 80rpx;
   line-height: 80rpx;
