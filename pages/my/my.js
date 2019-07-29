@@ -4,31 +4,11 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: {},
     hasUserInfo: false,
-    navList: [
-      {
-        text: '我的答卷',
-        icon: 'icon_compile',
-        url: '/pages/question/question'
-      },
-      {
-        text: '我的二维码',
-        icon: 'icon_QRcode',
-        url: '/pages/question/question'
-      },
-      {
-        text: '我的下级',
-        icon: 'icon_group',
-        url: '/pages/subordinate/subordinate'
-      },
-      {
-        text: '消费记录',
-        icon: 'icon_coinpurse_line',
-        url: '/pages/subordinate/subordinate'
-      }
-    ]
+    ewmPopup: false
   },
 
   onLoad: function () {
+    this.loadMethods();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -85,6 +65,17 @@ Page({
         console.log(res)
         loadMethods();
       }
+    })
+  },
+
+  showEwm: function () {
+    this.setData({
+      ewmPopup: true
+    })
+  },
+  hideEwm: function () {
+    this.setData({
+      ewmPopup: false
     })
   }
 })

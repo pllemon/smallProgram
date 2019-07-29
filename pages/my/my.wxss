@@ -26,10 +26,6 @@
   overflow: hidden;
 }
 
-.username{
-  padding: 20rpx;
-}
-
 .scan{
   position: absolute;
   right: 40rpx;
@@ -56,7 +52,67 @@
   border: none;
   margin: 0;
   padding: 0;
+  line-height: 1;
 }
 .userinfo button:after{
   border: none;
+}
+
+.popup{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 20;
+}
+.ewm-content{
+  padding: 40rpx;
+  background: #fff;
+  width: 550rpx;
+  position: absolute;
+  top: 50%;
+  left: 100rpx;
+  margin-top: -260rpx;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 36rpx;
+}
+.ewm-content .ewm{
+  width: 470rpx;
+  height: 470rpx;
+  margin-top: 40rpx;
+}
+.ewm-content .userIcon{
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0;
+  margin-right: 20rpx;
+  font-size: 44rpx;
+  position: absolute;
+  top: -178rpx;
+  left: 194rpx;
+}
+.bg{
+  position: absolute;
+  top: -246rpx;
+  left: -60rpx;
+  height: 247rpx;
+}
+.close{
+  position: absolute;
+  right: 0;
+  top: -100rpx;
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 40;
+}
+.close-line{
+  position: absolute;
+  right: 28rpx;
+  width: 6rpx;
+  height: 50rpx;
+  background: #fff;
+  top: -42rpx;
 }

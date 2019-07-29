@@ -8,6 +8,20 @@ page{
   display: flex;
   align-items: center;
 }
+.flex-between{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.flex-cloum-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.flex1{
+  flex: 1;
+}
 
 .item {
   position: relative;
@@ -30,4 +44,5 @@ page{
   color: #fff;
   border: none;
   background: linear-gradient(45deg, #066af4, #0a87ff);
+  font-size: 32rpx;
 }

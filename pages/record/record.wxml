@@ -1,3 +1,7 @@
 <view class='item' wx:for='{{list}}' wx:key='{{memberId}}'>
-    {{item.memberName}}
+    <image class="money icon" src="../../images/money.png" mode="cover"></image>
+    <view class="flex1">
+        <view class="number">+20.00</view>
+        <view class="time">2019-12-12 03:10</view>
+    </view>
 </view>

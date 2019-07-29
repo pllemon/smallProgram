@@ -1,20 +1,46 @@
 <view class='header'>
   <image class='banner' mode='aspectFill' src='../../images/banner.jpg'></image>
-  <view class="userinfo">
+  <view class="userinfo" wx:if="{{!ewmPopup}}">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
       <image class="userIcon" src="../../images/people.png" mode="cover"></image>
       <view class="username">点击登录</view>
     </button>
     <block wx:else>
-      <image bindtap="bindViewTap" class="userIcon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <image class="userIcon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <view class="username">{{userInfo.nickName}}</view>
     </block>
   </view>
   <image class='icon scan' mode='aspectFill' bindtap="scanCode" src='../../images/icon_scan.png'></image>
 </view>
 
-<navigator class='item' wx:for="{{navList}}" wx:key="index" url="{{item.url}}">
-  <image class='icon' mode='aspectFill' src='../../images/{{item.icon}}.png'></image>
-  <text>{{item.text}}</text>
+<navigator class='item' url="/pages/question/question">
+  <image class='icon' mode='aspectFill' src='../../images/icon_compile.png'></image>
+  <text>我的答卷</text>
   <image class='right' mode='aspectFill' src='../../images/right.png'></image>
 </navigator>
+<view class='item' bindtap="showEwm">
+  <image class='icon' mode='aspectFill' src='../../images/icon_QRcode.png'></image>
+  <text>我的二维码</text>
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</view>
+<navigator class='item' url="/pages/subordinate/subordinate">
+  <image class='icon' mode='aspectFill' src='../../images/icon_group.png'></image>
+  <text>我的下级</text>
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</navigator>
+<navigator class='item' url="/pages/record/record">
+  <image class='icon' mode='aspectFill' src='../../images/icon_coinpurse_line.png'></image>
+  <text>收入明细</text>
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</navigator>
+
+<view class="popup" wx:if="{{ewmPopup}}">
+  <view class="ewm-content">
+    <image class="icon close" src='../../images/close.png' mode="cover" bindtap="hideEwm"></image>
+    <view class="close-line"></view>
+    <image class="bg" src='../../images/bg2.png' mode="cover"></image>
+    <image class="userIcon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <p>{{userInfo.nickName}} 邀你加入</p>
+    <image class='ewm' mode='aspectFill' src='../../images/ewm.png'></image>
+  </view>
+</view>

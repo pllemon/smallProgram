@@ -61,7 +61,6 @@ Page({
       wx.hideLoading()
       if (res === 'success') {
         wx.showModal({
-          title: '提示',
           content: '答卷已提交',
           showCancel:false,
           success(res) {

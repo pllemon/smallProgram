@@ -3,7 +3,8 @@
     "pages/my/my",
     "pages/question/question",
     "pages/subordinate/subordinate",
-    "pages/record/record"
+    "pages/record/record",
+    "pages/ewm/ewm"
   ],
   "window": {
     "backgroundTextStyle": "light",

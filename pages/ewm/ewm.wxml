@@ -1,0 +1,9 @@
+<view class="header flex-cloum-center">
+    <image class="userIcon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class="username">{{userInfo.nickName}} 邀你加入</view>
+</view>
+<view class="ewm-content">
+    <image class='ewm' mode='aspectFill' src='../../images/ewm.png'></image>
+</view>
+<image class='bg bg-top' mode='widthFix' src='../../images/bg_top.png'></image>
+<image class='bg bg-bottom' mode='widthFix' src='../../images/bg_bottom.png'></image>

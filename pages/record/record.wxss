@@ -1,0 +1,16 @@
+.item{
+
+}
+.icon{
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 20rpx;
+}
+.number{
+    font-size: 40rpx;
+    font-weight: bold;
+}
+.time{
+    color: #aaa;
+    font-size: 30rpx;
+}
