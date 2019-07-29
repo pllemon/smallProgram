@@ -31,6 +31,22 @@ Page({
     })
   },
   submitForm(e) {
+    let userName = e.detail.value.userName;
+    let phone = e.detail.value.phone;
+    if (!userName) {
+      wx.showModal({
+        content: '请填写姓名',
+        showCancel: false
+      })
+      return false;
+    }
+    if (!phone) {
+      wx.showModal({
+        content: '请填写联系电话',
+        showCancel: false
+      })
+      return false;
+    }
     wx.showLoading({
       title: '提交中...',
       mask: true
@@ -39,14 +55,14 @@ Page({
       userId: 'dist',
       secret: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjU5NjE0MjYzOTIsInBheWxvYWQiOiJcImRpc3RcIiJ9.NPNeVpoHi4MnW2pRv65QTyytApYokVHVZpdkPYAB2H4',
       answers: this.data.answers,
-      userName: e.detail.value.userName,
-      phone: e.detail.value.phone
+      userName: userName,
+      phone: phone
     }).then(res => {
       wx.hideLoading()
       if (res === 'success') {
         wx.showModal({
           title: '提示',
-          content: '答卷已提交。',
+          content: '答卷已提交',
           showCancel:false,
           success(res) {
             if (res.confirm) {
