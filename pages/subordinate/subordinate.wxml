@@ -1,0 +1,2 @@
+<!--pages/subordinate/subordinate.wxml-->
+<view class='item' wx:for='{{list}}' wx:key='{{memberId}}'>{{item.memberName}}</view>

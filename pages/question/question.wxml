@@ -1,0 +1,29 @@
+<!--pages/question/question.wxml-->
+<block wx:if='{{question && !questionEnd}}'>
+  <view class='block'>
+    <view class='title flex'>
+      <image class='icon' mode='aspectFill' src='../../images/icon_circle_line.png'></image>
+      <text>{{question.content}}</text>
+    </view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio flex" wx:for="{{question.questionOptionList}}" wx:key='item.id'>
+        <radio value="{{item.id}}" color="#0a87ff"/>
+        <text>{{item.content}}</text>
+      </label>
+    </radio-group>
+  </view>
+  <button class='btn' bindtap='nextFunc'>下一题</button>
+</block>
+<form wx:else bindsubmit='submitForm' class="form">
+  <view class="form-content">
+    <view class='flex'>
+      <view>姓名：</view>
+      <input class='text' name='userName' placeholder="请输入"></input>
+    </view>
+    <view class='flex'>
+      <view>联系电话：</view>
+      <input class='text' name='phone' placeholder="请输入"></input>
+    </view>
+  </view>
+  <button class='btn' form-type='submit'>提交</button>
+</form>

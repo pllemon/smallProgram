@@ -1,0 +1,33 @@
+<!--pages/my/my.wxml-->
+<view class='header'>
+  <image class='banner' mode='aspectFill' src='../../images/banner.jpg'></image>
+  <view class='userIcon'>
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <open-data class='username' type="userNickName"></open-data>
+  <image class='icon scan' mode='aspectFill' src='../../images/icon_scan.png'></image>
+</view>
+
+<view class='item' data-url='../question/question' bindtap='goToUrl'>
+  <image class='icon' mode='aspectFill' src='../../images/icon_compile.png'></image>
+  <text>答卷</text>
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</view>
+<view class='item' data-url='../question/question'>
+  <image class='icon' mode='aspectFill' src='../../images/icon_QRcode.png'></image>
+  <text>我的二维码</text>
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</view>
+<view class='item' data-url='../subordinate/subordinate' bindtap='goToUrl'>
+  <image class='icon' mode='aspectFill' src='../../images/icon_group.png'></image>
+  <text>我的下级</text>
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</view>
+<view class='item' data-url='../subordinate/subordinate' bindtap='goToUrl'>
+  <image class='icon' mode='aspectFill' src='../../images/icon_coinpurse_line.png'></image>
+  <text>消费记录</text>
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</view>
+<!-- <view class='item' data-url='../question/question'>申请人
+  <image class='right' mode='aspectFill' src='../../images/right.png'></image>
+</view> -->

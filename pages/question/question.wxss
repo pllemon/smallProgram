@@ -1,0 +1,36 @@
+.block{
+  margin-bottom: 60rpx;
+  background: #fff;
+  padding: 40rpx;
+}
+
+.title {
+  padding-bottom: 20rpx;
+  font-weight: bold;
+}
+
+.title .icon{
+  margin-right: 10rpx;
+  display: none;
+}
+
+.radio {
+  display: block;
+  padding: 20rpx 0;
+}
+
+.form .flex{
+  justify-content: space-between;
+  padding: 20rpx;
+}
+.form .form-content{
+  background: #fff;
+  padding: 20rpx 0;
+}
+.form input{
+  border: 1px solid #dcdcdc;
+  width: 500rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+}

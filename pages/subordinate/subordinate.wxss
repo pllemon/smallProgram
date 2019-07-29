@@ -1,0 +1,6 @@
+/* pages/subordinate/subordinate.wxss */
+.item{
+  padding: 30rpx;
+  font-size: 32rpx;
+  border-bottom:1rpx solid #eee;
+}
