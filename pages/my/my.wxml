@@ -3,7 +3,7 @@
   <view class="userinfo" wx:if="{{!ewmPopup}}">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
       <image class="userIcon" src="../../images/people.png" mode="cover"></image>
-      <view class="username">点击登录</view>
+      <view class="username">点击授权</view>
     </button>
     <block wx:else>
       <image class="userIcon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -41,6 +41,6 @@
     <image class="bg" src='../../images/bg2.png' mode="cover"></image>
     <image class="userIcon" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     <p>{{userInfo.nickName}} 邀你加入</p>
-    <image class='ewm' mode='aspectFill' src='../../images/ewm.png'></image>
+    <image class='ewm' mode='aspectFill' src='{{codeUrl}}'></image>
   </view>
 </view>

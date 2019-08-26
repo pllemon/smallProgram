@@ -13,19 +13,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.showLoading({
-      title: '加载中...',
-      mask:true
-    })
-    app.api.subordinate({
-      memberId: 'dist',
-      secret: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjU5NjE0MjYzOTIsInBheWxvYWQiOiJcImRpc3RcIiJ9.NPNeVpoHi4MnW2pRv65QTyytApYokVHVZpdkPYAB2H4'
-    }).then(res => {
-      wx.hideLoading()
-      this.setData({
-        list: res
+    if (app.globalData.loginInfo) {
+      wx.showLoading({
+        title: '加载中...',
+        mask:true
       })
-    })
+      app.api.getProfitRecordList(app.globalData.loginInfo.member.disUserId).then(res => {
+        wx.hideLoading()
+        this.setData({
+          list: res.profitRecordList
+        })
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请先扫码绑定上级，再进行操作'
+      })  
+    }
   },
 
   /**

@@ -2,6 +2,34 @@
 import api from './utils/api'
 App({
   onLaunch: function () {
+    // 登陆获取用户信息
+    let that = this;
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    wx.login({
+      success(res) {
+        that.api.wxappLogin({
+          code: res.code
+        }).then(res => {
+          console.log(res)
+          if (res == '') {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: '请先扫码绑定上级，再进行操作'
+            })   
+          }
+          that.globalData.loginInfo = res;
+          wx.hideLoading()
+        })
+      },
+      fail(err) {
+        reject(err)
+      }
+    })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -23,8 +51,14 @@ App({
       }
     })
   },
+
+  loadMethods: function () {
+    
+  },
+
   globalData: {
-    userInfo: null
+    userInfo: null,
+    loginInfo: null
   },
   api
 })

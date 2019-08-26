@@ -82,7 +82,6 @@
 .ewm-content .ewm{
   width: 470rpx;
   height: 470rpx;
-  margin-top: 40rpx;
 }
 .ewm-content .userIcon{
   width: 160rpx;

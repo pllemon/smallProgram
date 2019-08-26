@@ -16,19 +16,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    })
-    app.api.getQuestion().then(res => {
-      console.log(res)
-      this.setData({
-        questionList: res.questionList,
-        questionId: res.questionList[0].id,
-        question: res.questionList[0]
+    if (app.globalData.loginInfo) {
+      wx.showLoading({
+        title: '加载中...',
+        mask: true
       })
-      wx.hideLoading()
-    })
+      app.api.getQuestion().then(res => {
+        console.log(res)
+        this.setData({
+          questionList: res.questionList,
+          questionId: res.questionList[0].id,
+          question: res.questionList[0]
+        })
+        wx.hideLoading()
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '请先扫码绑定上级，再进行操作'
+      })  
+    }
   },
   submitForm(e) {
     let userName = e.detail.value.userName;
@@ -52,8 +60,8 @@ Page({
       mask: true
     })
     app.api.commitAnswers({
-      userId: 'dist',
-      secret: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NjU5NjE0MjYzOTIsInBheWxvYWQiOiJcImRpc3RcIiJ9.NPNeVpoHi4MnW2pRv65QTyytApYokVHVZpdkPYAB2H4',
+      userId: app.globalData.loginInfo.member.disUserId,
+      secret: app.globalData.loginInfo.secret,
       answers: this.data.answers,
       userName: userName,
       phone: phone
