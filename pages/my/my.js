@@ -68,9 +68,7 @@ Page({
           wx.login({
             success(res) {
               app.api.wxappLogin({
-                code: res.code,
-                disModelId: disModelId,
-                disPlatformId: disPlatformId
+                code: res.code + '&disModelId=' + disModelId + '&disPlatformId=' + disPlatformId,
               }).then(res => {
                 console.log(res)
                 app.globalData.loginInfo = res;
