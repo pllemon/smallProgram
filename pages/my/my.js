@@ -56,19 +56,15 @@ Page({
       wx.scanCode({
         success (res) {
           console.log(res.result)
-          res.result = decodeURIComponent(res.result);
-          let disPlatformId = res.result.split('&')[1].slice(14);
-          let disModelId = res.result.split('&')[0].slice(11);
-          console.log(res.result)
-          console.log(disPlatformId);
-          console.log(disModelId);
+          let codeResult = res.result;
           wx.showLoading({
             title: '加载中...',
           })
           wx.login({
             success(res) {
+              console.log(res.code + '&' + codeResult)
               app.api.wxappLogin({
-                code: res.code + '&disModelId=' + disModelId + '&disPlatformId=' + disPlatformId,
+                code: res.code + '&' + codeResult,
               }).then(res => {
                 console.log(res)
                 app.globalData.loginInfo = res;
