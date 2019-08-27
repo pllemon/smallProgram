@@ -1,30 +1,30 @@
 class Api {
   // 问卷列表
   getQuestion() {
-    return this.request('https://dist.qtsay.com/api/v1/getAllQuestion', {}, 'POST')
+    return this.request('https://qtsay.com/api/v1/getAllQuestion', {}, 'POST')
   }
   // 提交问卷答案
   commitAnswers(data) {
-    return this.request('https://dist.qtsay.com/api/v1/commitAnswers', data, 'GET')
+    return this.request('https://qtsay.com/api/v1/commitAnswers', data, 'GET')
   }
   // 下级
   subordinate(data) {
-    return this.request('https://dist.qtsay.com/api/v1/subordinate', data, 'POST')
+    return this.request('https://qtsay.com/api/v1/subordinate', data, 'POST')
   }
   // 登陆
   wxappLogin(data) {
-    return this.request('https://dist.qtsay.com/api/v1/wxappLogin', data, 'GET')
+    return this.request('https://qtsay.com/api/v1/wxappLogin', data, 'GET')
   }
   // 获取二维码
   getScan(code) {
-    return this.request('https://dist.qtsay.com/api/v1/createQrcode', {
+    return this.request('https://qtsay.com/api/v1/createQrcode', {
       code
     }, 'GET', 2)
   }
 
   // 获取记录
   getProfitRecordList(disUserId) {
-    return this.request('https://dist.qtsay.com/api/v1/getProfitRecordList', {
+    return this.request('https://qtsay.com/api/v1/getProfitRecordList', {
       disUserId
     }, 'GET')
   }

@@ -57,14 +57,18 @@ Page({
         success (res) {
           console.log(res.result)
           let codeResult = res.result;
+          let disPlatformId = codeResult.split('&')[0].split('=')[1];
+          let disModelId = codeResult.split('&')[1].split('=')[1];
+          console.log(disPlatformId, disModelId)
           wx.showLoading({
             title: '加载中...',
           })
           wx.login({
             success(res) {
-              console.log(res.code + '&' + codeResult)
               app.api.wxappLogin({
-                code: res.code + '&' + codeResult,
+                code: res.code,
+                disPlatformId: disPlatformId,
+                disModelId: disModelId
               }).then(res => {
                 console.log(res)
                 app.globalData.loginInfo = res;
