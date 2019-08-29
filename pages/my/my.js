@@ -42,8 +42,6 @@ Page({
     })
   },
 
-  
-
   scanCode: function () {
     let that = this;
     if (app.globalData.loginInfo) {
@@ -51,8 +49,16 @@ Page({
         title: '提示',
         showCancel: false,
         content: '你已绑定上级，请勿重新绑定'
-      })      
+      }) 
     } else {
+      if (!app.globalData.userInfo) {
+        wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: '请先登陆再扫码'
+        })
+        return false;
+      }
       wx.scanCode({
         success (res) {
           console.log(res.result)
@@ -68,7 +74,10 @@ Page({
               app.api.wxappLogin({
                 code: res.code,
                 disPlatformId: disPlatformId,
-                disModelId: disModelId
+                disModelId: disModelId,
+                avatarUrl: app.globalData.userInfo.avatarUrl,
+                gender: app.globalData.userInfo.gender,
+                nickName: app.globalData.userInfo.nickName
               }).then(res => {
                 console.log(res)
                 app.globalData.loginInfo = res;
@@ -77,7 +86,7 @@ Page({
                   title: '绑定成功',
                   icon: 'success',
                   duration: 2000
-                })                
+                })
               })
             }
           })
@@ -85,10 +94,10 @@ Page({
       })
     }
   },
-
+    
   showEwm: function () {
     let loginInfo = app.globalData.loginInfo;
-    let codeStr = encodeURIComponent('disModelId:' + loginInfo.member.disUserId + '&disPlatformId:' + loginInfo.member.disPlatformId);
+    let codeStr = encodeURIComponent('disModelId=' + loginInfo.member.disUserId + '&disPlatformId=' + loginInfo.member.disUserId);
     console.log(codeStr);
     app.api.getScan(codeStr).then(res => {
       console.log(res)
@@ -98,6 +107,7 @@ Page({
       })
     })
   },
+
   hideEwm: function () {
     this.setData({
       ewmPopup: false
