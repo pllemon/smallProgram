@@ -71,23 +71,29 @@ Page({
           })
           wx.login({
             success(res) {
-              app.api.wxappLogin({
-                code: res.code,
-                disPlatformId: disPlatformId,
-                disModelId: disModelId,
-                avatarUrl: app.globalData.userInfo.avatarUrl,
-                gender: app.globalData.userInfo.gender,
-                nickName: app.globalData.userInfo.nickName
+              that.api.wxappLogin({
+                code: res.code
               }).then(res => {
                 console.log(res)
-                app.globalData.loginInfo = res;
-                wx.hideLoading()
-                wx.showToast({
-                  title: '绑定成功',
-                  icon: 'success',
-                  duration: 2000
-                })
+                if (res.success) {
+                  app.globalData.loginInfo = res;
+                  wx.hideLoading()
+                  wx.showToast({
+                    title: '绑定成功',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                } else {
+                  wx.showToast({
+                    title: res.errorMessage,
+                    icon: 'fail',
+                    duration: 2000
+                  })
+                }
               })
+            },
+            fail(err) {
+              reject(err)
             }
           })
         }
