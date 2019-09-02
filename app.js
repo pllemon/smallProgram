@@ -14,14 +14,20 @@ App({
           code: res.code
         }).then(res => {
           console.log(res)
-          if (res == '') {
-            wx.showModal({
-              title: '提示',
-              showCancel: false,
-              content: '请先扫码绑定上级，再进行操作'
-            })   
+          if (res.success) {
+            that.globalData.loginInfo = res.data;
+            wx.showToast({
+              title: '加载页面成功',
+              icon: 'success',
+              duration: 2000
+            })
+          } else {
+            wx.showToast({
+              title: res.errorMessage,
+              icon: 'fail',
+              duration: 2000
+            })
           }
-          that.globalData.loginInfo = res;
           wx.hideLoading()
         })
       },

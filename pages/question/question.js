@@ -88,12 +88,13 @@ Page({
       return item.id == e.detail.value
     })[0]
     this.setData({
-      questionId: data.nextQuestionId
+      questionId: data.nextQuestionId,
+      orderIndex: data.orderIndex
     })
   },
   nextFunc() {
     this.setData({
-      answers: !this.data.answers ? `${this.data.question.id}-${this.data.questionId}` : `${this.data.answers},${this.data.question.id}-${this.data.questionId}`
+      answers: !this.data.answers ? `${this.data.question.id}-${this.data.orderIndex}-${this.data.questionId}` : `${this.data.answers},${this.data.question.id}-${this.data.orderIndex}-${this.data.questionId}`
     })
     console.log(this.data.answers)
     if (!this.data.questionId) {
